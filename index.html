@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tejas Hariharan | Software Developer</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-bg: #f8f9fa;
+            --dark-bg: #2c3e50;
+            --text-light: #f8f9fa;
+            --text-dark: #333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        
+        .profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info a {
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s;
+        }
+        
+        .contact-info a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .contact-info i {
+            margin-right: 0.5rem;
+        }
+        
+        section {
+            margin-bottom: 3rem;
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .project-card {
+            background-color: var(--light-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            margin-bottom: 2rem;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-title {
+            font-size: 1.25rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-tech {
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .experience-item {
+            margin-bottom: 2rem;
+        }
+        
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .job-title {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .company {
+            color: var(--secondary-color);
+        }
+        
+        .job-duration {
+            color: #666;
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .skill-category {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .skill-category h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .skill-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .skill-item {
+            background-color: var(--light-bg);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .social-links {
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: var(--text-light);
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        
+        @media (max-width: 768px) {
+            .experience-header {
+                flex-direction: column;
+            }
+            
+            .job-duration {
+                margin-top: 0.25rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="profile">
+                <img src="/api/placeholder/400/400" alt="Tejas Hariharan" class="profile-image">
+                <h1>Tejas Hariharan</h1>
+                <p class="subtitle">Software Developer & Computer Science Student</p>
+                <div class="contact-info">
+                    <a href="mailto:th734@scarletmail.rutgers.edu"><i class="fas fa-envelope"></i> th734@scarletmail.rutgers.edu</a>
+                    <a href="https://linkedin.com/in/tejas-hari"><i class="fab fa-linkedin"></i> linkedin.com/in/tejas-hari</a>
+                    <a href="https://github.com/tejasharih"><i class="fab fa-github"></i> github.com/tejasharih</a>
+                    <a href="tel:5713560237"><i class="fas fa-phone"></i> (571) 356-0237</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p>
+                    I'm a Computer Science & Cognitive Science student at Rutgers University with a passion for front-end development and creating intuitive user experiences. 
+                    My background combines technical skills in programming languages like Java, JavaScript, React.js, and Python with an understanding of cognitive processes, 
+                    allowing me to build applications that are both technically sound and user-friendly.
+                </p>
+                <p>
+                    Currently, I'm focused on expanding my knowledge in mobile app development and web technologies while seeking opportunities 
+                    to apply my skills in real-world projects.
+                </p>
+            </div>
+        </section>
+        
+        <section id="projects">
+            <h2>Projects</h2>
+            
+            <div class="project-card">
+                <div class="project-content">
+                    <h3 class="project-title">LearnTrack</h3>
+                    <p class="project-tech">Python, Figma, Firebase</p>
+                    <p>
+                        A personalized learning platform that integrates the Pomodoro technique with AI-generated learning pathways. 
+                        Leverages Gemini AI to create customized study plans for users to improve learning efficiency.
+                    </p>
+                    <ul>
+                        <li>Built with Python backend and Figma for designing an intuitive interface</li>
+                        <li>Implemented real-time task management with Firebase for data storage</li>
+                        <li>Integrated timer functionality for Pomodoro sessions and drag-and-drop capabilities</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-content">
+                    <h3 class="project-title">Game of Life Simulation</h3>
+                    <p class="project-tech">Java, Cellular Automata</p>
+                    <p>
+                        A Java-based simulation of Conway's Game of Life, applying cellular automata rules to model 
+                        complex life cycles and emergent behaviors.
+                    </p>
+                    <ul>
+                        <li>Engineered an optimized grid management system for efficient state updates</li>
+                        <li>Improved performance for handling large-scale simulations</li>
+                        <li>Added interactive features for users to modify configurations and observe pattern evolution</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="experience">
+            <h2>Experience</h2>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <span class="job-title">Front End Developer</span> at 
+                        <span class="company">Rutgers Mobile App Development Club</span>
+                    </div>
+                    <span class="job-duration">Jan 2025 – Apr 2025</span>
+                </div>
+                <ul>
+                    <li>Developed a mobile learning app using React Native and Firebase with intuitive UI/UX</li>
+                    <li>Collaborated with backend engineers to implement authentication and database management</li>
+                    <li>Participated in code reviews, debugging, and optimized overall performance</li>
+                </ul>
+            </div>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <span class="job-title">Freelance Web Developer</span> at 
+                        <span class="company">V3 Catering</span>
+                    </div>
+                    <span class="job-duration">Dec 2024 – Apr 2025</span>
+                </div>
+                <ul>
+                    <li>Designed and developed a responsive website featuring a dynamic image gallery and interactive contact form</li>
+                    <li>Built modular UI components using React.js with animations and dynamic transitions</li>
+                    <li>Implemented a custom carousel, interactive navigation, and real-time updates</li>
+                </ul>
+            </div>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <span class="job-title">Grade Representative</span> at 
+                        <span class="company">Association of Indians at Rutgers (AIR)</span>
+                    </div>
+                    <span class="job-duration">Jul 2024 – Present</span>
+                </div>
+                <ul>
+                    <li>Planned and executed major cultural events engaging 500+ students</li>
+                    <li>Achieved 90% satisfaction in event feedback surveys</li>
+                    <li>Organized networking and mentorship programs connecting students with professionals</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="education">
+            <h2>Education</h2>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <span class="job-title">Bachelor of Science in Computer Science & Cognitive Science</span>
+                    </div>
+                    <span class="job-duration">Sep 2023 – May 2027</span>
+                </div>
+                <p><strong>Rutgers University - New Brunswick</strong> | GPA: 3.5</p>
+                <p><strong>Relevant Coursework:</strong> Data Structures, Computer Architecture, Discrete Structures, Physics, Calculus, Linear Algebra, Cognitive Science, Linguistic Theory</p>
+            </div>
+        </section>
+        
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Java</span>
+                        <span class="skill-item">JavaScript</span>
+                        <span class="skill-item">TypeScript</span>
+                        <span class="skill-item">Python</span>
+                        <span class="skill-item">HTML</span>
+                        <span class="skill-item">CSS</span>
+                        <span class="skill-item">C</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Frameworks & Libraries</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">React.js</span>
+                        <span class="skill-item">React Native</span>
+                        <span class="skill-item">Node.js</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Tools & Technologies</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Git</span>
+                        <span class="skill-item">Figma</span>
+                        <span class="skill-item">Firebase</span>
+                        <span class="skill-item">Excel</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>© 2025 Tejas Hariharan. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://linkedin.com/in/tejas-hari"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/tejasharih"><i class="fab fa-github"></i></a>
+            </div>
+            <p>Let's connect and create something amazing together!</p>
+        </div>
+    </footer>
+</body>
+</html>
