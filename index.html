@@ -27,6 +27,8 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: var(--text-dark);
+            /* Subtle geometric background */
+            background: repeating-linear-gradient(135deg, #f8f9fa 0px, #f8f9fa 40px, #f0f2f5 40px, #f0f2f5 80px);
         }
 
         /* Navigation */
@@ -95,6 +97,11 @@
             margin-bottom: 1.5rem;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
             transition: var(--transition);
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            border: 4px solid var(--secondary-color);
+            animation: glow 2.5s infinite alternate;
         }
 
         .profile-image:hover {
@@ -157,6 +164,9 @@
             margin-bottom: 2rem;
             font-size: 2.2rem;
             position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s, transform 0.7s;
         }
 
         h2::after {
@@ -174,14 +184,14 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
+            transition: var(--transition), box-shadow 0.4s cubic-bezier(.77,0,.18,1);
             margin-bottom: 2rem;
             border: 1px solid rgba(0, 0, 0, 0.1);
         }
         
         .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transform: scale(1.03) translateY(-8px);
+            box-shadow: 0 12px 32px rgba(44,62,80,0.13);
         }
         
         .project-content {
@@ -274,6 +284,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 0.75rem;
+            flex-direction: column;
         }
         
         .skill-item {
@@ -283,6 +294,12 @@
             font-size: 0.9rem;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
             transition: var(--transition);
+            margin-bottom: 0.5rem;
+            background: none;
+            box-shadow: none;
+            padding: 0;
+            color: var(--primary-color);
+            font-weight: 500;
         }
 
         .skill-item:hover {
@@ -297,6 +314,8 @@
             color: var(--text-light);
             text-align: center;
             padding: 3rem 0;
+            position: relative;
+            overflow: hidden;
         }
         
         .social-links {
@@ -314,6 +333,52 @@
         .social-links a:hover {
             color: var(--secondary-color);
             transform: translateY(-3px);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(.77,0,.18,1), transform 0.8s cubic-bezier(.77,0,.18,1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: none;
+        }
+        .progress-bar {
+            width: 100%;
+            background: #e0e7ef;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            height: 14px;
+        }
+        .progress {
+            height: 100%;
+            border-radius: 10px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            width: 0;
+            transition: width 1.2s cubic-bezier(.77,0,.18,1);
+        }
+        .progress.visible {
+            /* Will be set inline by JS */
+        }
+        .footer-wave {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: url('data:image/svg+xml;utf8,<svg width="100%25" height="100%25" viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg"><path d="M0,0V46.29c47.29,22.09,104.09,29,158,17.39C230.87,51.6,284.09,19.13,339,8.26c54.13-10.67,104.09,12.09,158,24.26,53.87,12.13,104.09,6.13,158-10.13,53.87-16.13,104.09-41.13,158-39.13,53.87,2,104.09,31.13,158,39.13,53.87,8,104.09-8,158-17.39V0Z" opacity=".25" fill="%23ffffff"/></svg>') repeat-x;
+            background-size: cover;
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 0 0 rgba(52,152,219,0.4), 0 4px 20px rgba(0,0,0,0.2); }
+            100% { box-shadow: 0 0 40px 10px rgba(52,152,219,0.25), 0 4px 20px rgba(0,0,0,0.2); }
+        }
+        h2.visible, h3.visible {
+            opacity: 1;
+            transform: none;
         }
 
         @media (max-width: 768px) {
@@ -371,7 +436,7 @@
         </nav>
     </div>
 
-    <header>
+    <header class="reveal">
         <div class="container">
             <div class="profile">
                 <img src="headshot.jpg" alt="Tejas Hariharan" class="profile-image">
@@ -388,7 +453,7 @@
     </header>
     
     <main class="container">
-        <section id="about">
+        <section id="about" class="reveal">
             <h2>About Me</h2>
             <div class="about-content">
                 <p>
@@ -403,7 +468,7 @@
             </div>
         </section>
         
-        <section id="projects">
+        <section id="projects" class="reveal">
             <h2>Projects</h2>
             
             <div class="project-card">
@@ -446,7 +511,7 @@
             </div>
         </section>
         
-        <section id="experience">
+        <section id="experience" class="reveal">
             <h2>Experience</h2>
             
             <div class="experience-item">
@@ -495,7 +560,7 @@
             </div>
         </section>
         
-        <section id="education">
+        <section id="education" class="reveal">
             <h2>Education</h2>
             
             <div class="experience-item">
@@ -510,20 +575,34 @@
             </div>
         </section>
         
-        <section id="skills">
+        <section id="skills" class="reveal">
             <h2>Technical Skills</h2>
             
             <div class="skills-container">
                 <div class="skill-category">
                     <h3><i class="fas fa-code"></i> Languages</h3>
                     <div class="skill-list">
-                        <span class="skill-item">Java</span>
-                        <span class="skill-item">JavaScript</span>
-                        <span class="skill-item">TypeScript</span>
-                        <span class="skill-item">Python</span>
-                        <span class="skill-item">HTML</span>
-                        <span class="skill-item">CSS</span>
-                        <span class="skill-item">C</span>
+                        <span class="skill-item">Java
+                            <div class="progress-bar"><div class="progress" data-progress="90"></div></div>
+                        </span>
+                        <span class="skill-item">JavaScript
+                            <div class="progress-bar"><div class="progress" data-progress="85"></div></div>
+                        </span>
+                        <span class="skill-item">TypeScript
+                            <div class="progress-bar"><div class="progress" data-progress="75"></div></div>
+                        </span>
+                        <span class="skill-item">Python
+                            <div class="progress-bar"><div class="progress" data-progress="80"></div></div>
+                        </span>
+                        <span class="skill-item">HTML
+                            <div class="progress-bar"><div class="progress" data-progress="95"></div></div>
+                        </span>
+                        <span class="skill-item">CSS
+                            <div class="progress-bar"><div class="progress" data-progress="90"></div></div>
+                        </span>
+                        <span class="skill-item">C
+                            <div class="progress-bar"><div class="progress" data-progress="60"></div></div>
+                        </span>
                     </div>
                 </div>
                 
@@ -550,6 +629,7 @@
     </main>
     
     <footer>
+        <div class="footer-wave"></div>
         <div class="container">
             <p>© 2025 Tejas Hariharan. All rights reserved.</p>
             <div class="social-links">
@@ -559,5 +639,29 @@
             <p>Let's connect and create something amazing together!</p>
         </div>
     </footer>
+    <script>
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal, h2, h3, .progress');
+    const revealOptions = { threshold: 0.15 };
+    const revealOnScroll = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                if (entry.target.classList.contains('progress')) {
+                    const val = entry.target.getAttribute('data-progress');
+                    entry.target.style.width = val + '%';
+                }
+                observer.unobserve(entry.target);
+            }
+        });
+    }, revealOptions);
+    reveals.forEach(el => revealOnScroll.observe(el));
+    // Animate headings on load
+    window.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('h2, h3').forEach((el, i) => {
+            setTimeout(() => el.classList.add('visible'), 400 + i * 120);
+        });
+    });
+    </script>
 </body>
 </html>
