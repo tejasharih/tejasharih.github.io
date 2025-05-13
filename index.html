@@ -27,8 +27,8 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: var(--text-dark);
-            /* Subtle geometric background */
-            background: repeating-linear-gradient(135deg, #f8f9fa 0px, #f8f9fa 40px, #f0f2f5 40px, #f0f2f5 80px);
+            /* Modern soft gradient background */
+            background: linear-gradient(135deg, #e0e7ef 0%, #f8f9fa 50%, #dbeafe 100%);
         }
 
         /* Navigation */
@@ -284,20 +284,17 @@
             display: flex;
             flex-wrap: wrap;
             gap: 0.75rem;
-            flex-direction: column;
+            flex-direction: row;
         }
         
         .skill-item {
-            background-color: white;
+            background-color: var(--light-bg);
             padding: 0.5rem 1rem;
             border-radius: 20px;
             font-size: 0.9rem;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
             transition: var(--transition);
-            margin-bottom: 0.5rem;
-            background: none;
-            box-shadow: none;
-            padding: 0;
+            margin-bottom: 0;
             color: var(--primary-color);
             font-weight: 500;
         }
@@ -582,27 +579,13 @@
                 <div class="skill-category">
                     <h3><i class="fas fa-code"></i> Languages</h3>
                     <div class="skill-list">
-                        <span class="skill-item">Java
-                            <div class="progress-bar"><div class="progress" data-progress="90"></div></div>
-                        </span>
-                        <span class="skill-item">JavaScript
-                            <div class="progress-bar"><div class="progress" data-progress="85"></div></div>
-                        </span>
-                        <span class="skill-item">TypeScript
-                            <div class="progress-bar"><div class="progress" data-progress="75"></div></div>
-                        </span>
-                        <span class="skill-item">Python
-                            <div class="progress-bar"><div class="progress" data-progress="80"></div></div>
-                        </span>
-                        <span class="skill-item">HTML
-                            <div class="progress-bar"><div class="progress" data-progress="95"></div></div>
-                        </span>
-                        <span class="skill-item">CSS
-                            <div class="progress-bar"><div class="progress" data-progress="90"></div></div>
-                        </span>
-                        <span class="skill-item">C
-                            <div class="progress-bar"><div class="progress" data-progress="60"></div></div>
-                        </span>
+                        <span class="skill-item">Java</span>
+                        <span class="skill-item">JavaScript</span>
+                        <span class="skill-item">TypeScript</span>
+                        <span class="skill-item">Python</span>
+                        <span class="skill-item">HTML</span>
+                        <span class="skill-item">CSS</span>
+                        <span class="skill-item">C</span>
                     </div>
                 </div>
                 
