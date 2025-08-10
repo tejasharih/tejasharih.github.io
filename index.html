@@ -1,636 +1,429 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tejas Hariharan | Software Developer</title>
-    <style>
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --light-bg: #f8f9fa;
-            --dark-bg: #2c3e50;
-            --text-light: #f8f9fa;
-            --text-dark: #333;
-            --transition: all 0.3s ease;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            /* Modern soft gradient background */
-            background: linear-gradient(135deg, #e0e7ef 0%, #f8f9fa 50%, #dbeafe 100%);
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tejas Hariharan — Software Developer</title>
+  <meta name="description" content="Tejas Hariharan — Computer Science & Cognitive Science student at Rutgers. Full-stack developer building AI-powered web apps.">
+  <meta property="og:title" content="Tejas Hariharan — Software Developer">
+  <meta property="og:description" content="Full-stack dev, student at Rutgers. Projects: Vibeform, LearnTrack. Open to internships and PM/TPM roles.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0f1724">
 
-        /* Navigation */
-        .nav-container {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: rgba(44, 62, 80, 0.95);
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-        }
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+  <style>
+    :root{
+      --bg:#f7fafc; --card:#ffffff; --muted:#6b7280; --accent:#06b6d4; --accent-2:#7c3aed; --ink:#0f1724;
+      --glass: rgba(255,255,255,0.6);
+      --radius:14px;
+      --transition: 260ms cubic-bezier(.2,.9,.3,1);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background: linear-gradient(180deg,#eef2ff 0%, #f8fafc 50%);
+      color:var(--ink); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+    }
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
+    /* NAV */
+    .nav {
+      position: sticky; top:0; z-index:60;
+      display:flex; gap:1rem; align-items:center; justify-content:space-between;
+      padding:14px 20px; backdrop-filter: blur(6px);
+      background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.45));
+      border-bottom: 1px solid rgba(15,23,36,0.05);
+    }
+    .brand { display:flex; align-items:center; gap:.75rem; text-decoration:none; color:var(--ink)}
+    .logo {
+      width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:grid;place-items:center;color:white;font-weight:700;font-size:18px;
+      box-shadow: 0 6px 20px rgba(124,58,237,0.12);
+    }
+    nav .links {display:flex; gap:12px; align-items:center}
+    nav a { color:var(--ink); text-decoration:none; font-weight:600; padding:8px 10px; border-radius:8px; font-size:14px}
+    nav a:hover{background:rgba(6,182,212,0.08); color:var(--accent-2)}
+    .cta { background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#fff; padding:8px 12px; border-radius:9px; font-weight:700; text-decoration:none; box-shadow: 0 6px 18px rgba(7,89,110,0.08)}
+    .mobile-toggle { display:none; border:0;background:none; font-size:20px }
 
-        .nav-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-        }
+    /* LAYOUT */
+    .wrap{max-width:1120px;margin:30px auto;padding:0 20px}
+    .hero{
+      display:grid; grid-template-columns: 1fr 360px; gap:28px; align-items:center;
+      margin-top:8px;
+    }
+    .hero-card{
+      background:linear-gradient(180deg,#ffffff, #fbfdff);
+      border-radius:var(--radius); padding:28px; box-shadow: 0 10px 30px rgba(15,23,36,0.06);
+      border:1px solid rgba(15,23,36,0.04)
+    }
+    .title { font-size:28px; font-weight:800; margin:0 0 8px; letter-spacing:-0.02em}
+    .subtitle { color:var(--muted); margin-bottom:18px; font-weight:500}
+    .hero-cta { display:flex; gap:12px; flex-wrap:wrap }
 
-        .nav-links a:hover {
-            background-color: var(--secondary-color);
-        }
+    .profile {
+      width:100%; display:flex; gap:18px; align-items:center;
+    }
+    .avatar { width:120px; height:120px; border-radius:18px; object-fit:cover; border:4px solid white; box-shadow: 0 10px 30px rgba(2,6,23,0.08) }
+    .contact { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px }
+    .pill { background: rgba(15,23,36,0.04); padding:8px 10px; border-radius:999px; font-weight:600; color:var(--muted); font-size:13px }
 
-        /* Header adjustments */
-        header {
-            padding-top: 6rem;
-            background: linear-gradient(135deg, var(--primary-color), var(--dark-bg));
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 0;
-        }
-        
-        .profile {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-        
-        .profile-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--secondary-color);
-            margin-bottom: 1.5rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            transition: var(--transition);
-            position: relative;
-            z-index: 1;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-            border: 4px solid var(--secondary-color);
-            animation: glow 2.5s infinite alternate;
-        }
+    /* GRID SECTIONS */
+    .grid-2 { display:grid; grid-template-columns: 1fr 380px; gap:24px; align-items:start; margin-top:26px }
+    .card { background:var(--card); border-radius:12px; padding:18px; box-shadow: 0 8px 28px rgba(2,6,23,0.04); border:1px solid rgba(15,23,36,0.03) }
+    h2.section { font-size:18px; margin:0 0 14px; display:flex; align-items:center; gap:12px }
+    .muted { color:var(--muted); font-size:14px }
 
-        .profile-image:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
-        }
-        
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .subtitle {
-            font-size: 1.5rem;
-            color: var(--secondary-color);
-            margin-bottom: 1.5rem;
-        }
-        
-        .contact-info {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .contact-info a {
-            color: var(--text-light);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            transition: var(--transition);
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-        
-        .contact-info a:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-2px);
-        }
-        
-        .contact-info i {
-            margin-right: 0.5rem;
-        }
+    /* projects */
+    .projects { display:grid; gap:14px }
+    .proj { display:flex; gap:14px; align-items:flex-start; padding:12px; border-radius:10px; transition:var(--transition); border:1px solid rgba(6,182,212,0.06) }
+    .proj:hover{ transform:translateY(-6px) }
+    .proj .icon{ width:54px;height:54px;border-radius:10px; display:grid;place-items:center; font-size:22px; color:white; background:linear-gradient(135deg,var(--accent),var(--accent-2)) }
+    .proj .body { flex:1 }
+    .proj .meta { color:var(--muted); font-size:13px; margin-bottom:6px }
+    .proj ul { margin:6px 0 0 18px; color:var(--muted) }
 
-        /* Section styling */
-        section {
-            margin-bottom: 4rem;
-            padding: 2rem 0;
-        }
-        
-        h2 {
-            color: var(--primary-color);
-            border-bottom: 3px solid var(--secondary-color);
-            padding-bottom: 0.5rem;
-            margin-bottom: 2rem;
-            font-size: 2.2rem;
-            position: relative;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.7s, transform 0.7s;
-        }
+    /* timeline / experience */
+    .timeline { display:flex; flex-direction:column; gap:12px }
+    .job { display:grid; grid-template-columns: auto 1fr; gap:12px; align-items:start; padding:12px; border-radius:10px }
+    .job-left { width:10px; height:10px; background:linear-gradient(180deg,var(--accent),var(--accent-2)); border-radius:50%; margin-top:6px }
+    .job-title { font-weight:700; color:var(--ink) }
+    .job-org { color:var(--accent-2); font-weight:700; font-size:13px }
+    .job-dur { color:var(--muted); font-size:13px; margin-top:6px }
+    .job ul { margin:8px 0 0 18px; color:var(--muted) }
 
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -3px;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background-color: var(--accent-color);
-        }
-        
-        .project-card {
-            background-color: var(--light-bg);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: var(--transition), box-shadow 0.4s cubic-bezier(.77,0,.18,1);
-            margin-bottom: 2rem;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-        }
-        
-        .project-card:hover {
-            transform: scale(1.03) translateY(-8px);
-            box-shadow: 0 12px 32px rgba(44,62,80,0.13);
-        }
-        
-        .project-content {
-            padding: 2rem;
-        }
-        
-        .project-title {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            margin-bottom: 0.75rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .project-tech {
-            font-size: 0.9rem;
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
+    /* skills */
+    .skills { display:flex; gap:10px; flex-wrap:wrap }
+    .tag { padding:8px 10px; border-radius:999px; background:linear-gradient(90deg,#f8fafc,#ffffff); border:1px solid rgba(15,23,36,0.04); font-weight:600; color:var(--ink); font-size:13px; transition:var(--transition) }
+    .tag:hover{ transform:translateY(-6px) }
 
-        .project-tech span {
-            background-color: rgba(52, 152, 219, 0.1);
-            padding: 0.25rem 0.75rem;
-            border-radius: 15px;
-        }
-        
-        .experience-item {
-            margin-bottom: 2.5rem;
-            padding: 1.5rem;
-            background-color: var(--light-bg);
-            border-radius: 8px;
-            transition: var(--transition);
-        }
+    /* footer */
+    footer{ margin-top:40px; padding:26px 0; color:var(--muted); text-align:center; font-size:14px }
 
-        .experience-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .experience-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-        }
-        
-        .job-title {
-            font-weight: bold;
-            color: var(--primary-color);
-            font-size: 1.2rem;
-        }
-        
-        .company {
-            color: var(--secondary-color);
-        }
-        
-        .job-duration {
-            color: #666;
-            font-size: 0.9rem;
-            padding: 0.25rem 0.75rem;
-            background-color: rgba(0, 0, 0, 0.05);
-            border-radius: 15px;
-        }
-        
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .skill-category {
-            background-color: var(--light-bg);
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .skill-category h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-        
-        .skill-list {
-            list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            flex-direction: row;
-        }
-        
-        .skill-item {
-            background-color: var(--light-bg);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-            margin-bottom: 0;
-            color: var(--primary-color);
-            font-weight: 500;
-        }
+    /* responsive */
+    @media (max-width:980px){
+      .hero{ grid-template-columns:1fr; }
+      .grid-2{ grid-template-columns:1fr; }
+      nav .links { display:none }
+      .mobile-toggle{ display:block }
+      .mobile-nav { display:none; position:fixed; inset:64px 16px 16px 16px; background:white; border-radius:12px; padding:14px; box-shadow: 0 18px 60px rgba(2,6,23,0.12) }
+      .mobile-nav.open{ display:block }
+    }
 
-        .skill-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            background-color: var(--secondary-color);
-            color: white;
-        }
-        
-        footer {
-            background: linear-gradient(135deg, var(--primary-color), var(--dark-bg));
-            color: var(--text-light);
-            text-align: center;
-            padding: 3rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .social-links {
-            margin: 1.5rem 0;
-        }
-        
-        .social-links a {
-            color: var(--text-light);
-            font-size: 1.8rem;
-            margin: 0 1rem;
-            transition: var(--transition);
-            display: inline-block;
-        }
-        
-        .social-links a:hover {
-            color: var(--secondary-color);
-            transform: translateY(-3px);
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s cubic-bezier(.77,0,.18,1), transform 0.8s cubic-bezier(.77,0,.18,1);
-        }
-        .reveal.visible {
-            opacity: 1;
-            transform: none;
-        }
-        .progress-bar {
-            width: 100%;
-            background: #e0e7ef;
-            border-radius: 10px;
-            overflow: hidden;
-            margin-bottom: 1rem;
-            height: 14px;
-        }
-        .progress {
-            height: 100%;
-            border-radius: 10px;
-            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
-            width: 0;
-            transition: width 1.2s cubic-bezier(.77,0,.18,1);
-        }
-        .progress.visible {
-            /* Will be set inline by JS */
-        }
-        .footer-wave {
-            position: absolute;
-            top: -40px;
-            left: 0;
-            width: 100%;
-            height: 60px;
-            background: url('data:image/svg+xml;utf8,<svg width="100%25" height="100%25" viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg"><path d="M0,0V46.29c47.29,22.09,104.09,29,158,17.39C230.87,51.6,284.09,19.13,339,8.26c54.13-10.67,104.09,12.09,158,24.26,53.87,12.13,104.09,6.13,158-10.13,53.87-16.13,104.09-41.13,158-39.13,53.87,2,104.09,31.13,158,39.13,53.87,8,104.09-8,158-17.39V0Z" opacity=".25" fill="%23ffffff"/></svg>') repeat-x;
-            background-size: cover;
-        }
-
-        @keyframes glow {
-            0% { box-shadow: 0 0 0 0 rgba(52,152,219,0.4), 0 4px 20px rgba(0,0,0,0.2); }
-            100% { box-shadow: 0 0 40px 10px rgba(52,152,219,0.25), 0 4px 20px rgba(0,0,0,0.2); }
-        }
-        h2.visible, h3.visible {
-            opacity: 1;
-            transform: none;
-        }
-
-        @media (max-width: 768px) {
-            .nav-container {
-                position: relative;
-            }
-
-            nav {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .nav-links {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-            }
-
-            header {
-                padding-top: 2rem;
-            }
-
-            .experience-header {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-            
-            .job-duration {
-                margin-top: 0.5rem;
-            }
-
-            h1 {
-                font-size: 2.5rem;
-            }
-
-            .contact-info {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-    </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    /* small utilities */
+    .muted-2{ color:#94a3b8; font-size:13px }
+    a.link-inline{ color:var(--accent-2); text-decoration:none; font-weight:700 }
+    .small{ font-size:13px }
+  </style>
 </head>
 <body>
-    <div class="nav-container">
-        <nav>
-            <div class="logo">TH</div>
-            <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#projects">Projects</a>
-                <a href="#experience">Experience</a>
-                <a href="#education">Education</a>
-                <a href="#skills">Skills</a>
-            </div>
-        </nav>
-    </div>
+  <header class="nav" role="banner">
+    <a class="brand" href="#top" aria-label="Home">
+      <div class="logo">TH</div>
+      <div style="line-height:1">
+        <div style="font-weight:700">Tejas Hariharan</div>
+        <div style="font-size:12px;color:var(--muted)">Software Developer • Rutgers University</div>
+      </div>
+    </a>
 
-    <header class="reveal">
-        <div class="container">
-            <div class="profile">
-                <img src="headshot.jpg" alt="Tejas Hariharan" class="profile-image">
-                <h1>Tejas Hariharan</h1>
-                <p class="subtitle">Chantilly, VA</p>
-                <p class="subtitle">Software Developer & Computer Science Student</p>
-                <div class="contact-info">
-                    <a href="mailto:th734@scarletmail.rutgers.edu"><i class="fas fa-envelope"></i> th734@scarletmail.rutgers.edu</a>
-                    <a href="https://linkedin.com/in/tejas-hari"><i class="fab fa-linkedin"></i> linkedin.com/in/tejas-hari</a>
-                    <a href="https://github.com/tejasharih"><i class="fab fa-github"></i> github.com/tejasharih</a>
-                    <a href="tel:5713560237"><i class="fas fa-phone"></i> (571) 356-0237</a>
-                </div>
+    <nav aria-label="Primary navigation">
+      <div class="links" role="navigation" aria-hidden="true">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact" class="cta">Contact</a>
+      </div>
+
+      <button class="mobile-toggle" aria-controls="mobile-nav" aria-expanded="false" title="Open menu">
+        <i class="fa fa-bars"></i>
+      </button>
+    </nav>
+  </header>
+
+  <main class="wrap" id="top">
+    <section class="hero">
+      <div class="hero-card">
+        <div class="profile">
+          <img src="headshot.jpg" alt="Tejas Hariharan headshot" class="avatar" onerror="this.style.display='none'">
+          <div>
+            <h1 class="title">Tejas Hariharan</h1>
+            <div class="subtitle">Chantilly, VA • Junior (B.S. Computer Science & Cognitive Science) • GPA 3.7</div>
+
+            <div class="contact small">
+              <div class="pill"><i class="fa fa-envelope" style="margin-right:8px"></i> th734@scarletmail.rutgers.edu</div>
+              <div class="pill"><i class="fa fa-phone" style="margin-right:8px"></i> (571) 356-0237</div>
+              <a class="pill link-inline" href="https://linkedin.com/in/tejas-hari" target="_blank" rel="noopener">linkedin.com/in/tejas-hari</a>
+              <a class="pill link-inline" href="https://github.com/tejasharih" target="_blank" rel="noopener">github.com/tejasharih</a>
             </div>
+
+            <div class="hero-cta" style="margin-top:14px">
+              <a class="cta" href="Resume2025.pdf" download>Download Resume</a>
+              <a class="cta" href="mailto:th734@scarletmail.rutgers.edu" style="background:transparent;color:var(--accent-2);box-shadow:none;border:1px solid rgba(124,58,237,0.12)">Email me</a>
+            </div>
+          </div>
         </div>
-    </header>
-    
-    <main class="container">
-        <section id="about" class="reveal">
-            <h2>About Me</h2>
-            <div class="about-content">
-                <p>
-                    I am currently a junior at Rutgers University, pursuing a dual degree in Computer Science and Cognitive Science. My academic and hands-on experiences have equipped me with strong skills in software development, full-stack engineering, and problem-solving, which I am eager to apply to new opportunities.
-                </p>
-                <p>
-                    In addition to my technical background, I'm also exploring opportunities in product management and tech consulting, where I can combine my problem-solving mindset with user-centered thinking and cross-functional collaboration.
-                </p>
-            </div>
-        </section>
-        
-        <section id="projects" class="reveal">
-            <h2>Projects</h2>
-            
-            <div class="project-card">
-                <div class="project-content">
-                    <h3 class="project-title"><i class="fas fa-music"></i> Vibeform <span style="font-size:0.9rem; color:#888; font-style:italic;">— React, Node.js, Groq API, Spotify API</span></h3>
-                    <ul>
-                        <li>Built a <b>multi-sensory web application</b> that generates curated playlists, themed recipes, meditations, style tips, and more by analyzing user-provided moods and ingredients, leveraging <b>Groq's LLM</b> and <b>Spotify's playlist API</b>.</li>
-                        <li>Engineered an end-to-end pipeline using <b>Node.js</b> and <b>React</b> that dynamically fetches and renders experience cards with <b>AI-generated content</b>, Spotify embeds, and personalized visual themes for each emotional state and vibe.</li>
-                        <li>Designed an <b>interactive, animated interface</b> featuring expandable vibe cards, mood history replays, motion transitions, and responsive layouts optimized for immersive multi-modal exploration and engagement.</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="project-card">
-                <div class="project-content">
-                    <h3 class="project-title"><i class="fas fa-graduation-cap"></i> LearnTrack <span style="font-size:0.9rem; color:#888; font-style:italic;">— Python, Figma, Firebase, Gemini AI</span></h3>
-                    <ul>
-                        <li>Created <b>LearnTrack</b>, a fully operational personalized learning platform that integrates the <b>Pomodoro</b> technique with AI-generated learning pathways, leveraging <b>Gemini AI</b> to create plans for users to improve study efficiency.</li>
-                        <li>Built the app using <b>Python</b> for the backend and <b>Figma</b> for designing an intuitive, user-friendly interface that seamlessly synchronizes learning goals with study session progress in real time, ensuring a smooth experience across devices.</li>
-                        <li>Implemented real-time task management with <b>Firebase</b> for data storage and session controls and real-time task management capabilities.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-        
-        <section id="experience" class="reveal">
-            <h2>Experience</h2>
-            
-            <div class="experience-item">
-                <div class="experience-header">
-                    <div>
-                        <span class="job-title">Full Stack Developer Intern</span> at 
-                        <span class="company">Sports Excitement</span>
-                    </div>
-                    <span class="job-duration">May 2025 – Present</span>
-                    <span class="job-location" style="margin-left:1rem; color:#888; font-size:0.95rem;">Remote</span>
-                </div>
+
+        <p class="muted" style="margin-top:18px">
+          I build full-stack web apps and AI-powered experiences. I'm actively seeking internships and product-focused roles where I can combine engineering and user-centered thinking.
+        </p>
+      </div>
+
+      <aside class="card">
+        <h2 class="section">Quick Facts</h2>
+        <div class="muted small">
+          <strong>Location:</strong> Chantilly, VA<br>
+          <strong>Majors:</strong> Computer Science & Cognitive Science (Rutgers)<br>
+          <strong>Looking for:</strong> Internships (Software Engineer / PM / TPM)<br>
+        </div>
+
+        <hr style="margin:14px 0;border:none;border-top:1px solid rgba(2,6,23,0.04)">
+
+        <h2 class="section">Tech Highlights</h2>
+        <div style="display:flex; flex-direction:column; gap:8px; margin-top:6px">
+          <div class="tag">Java</div>
+          <div class="tag">JavaScript</div>
+          <div class="tag">React.js</div>
+          <div class="tag">Node.js</div>
+          <div class="tag">Python</div>
+          <div class="tag">TypeScript</div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="about" class="grid-2" aria-labelledby="aboutHeading" style="margin-top:26px">
+      <div>
+        <div class="card">
+          <h2 class="section" id="aboutHeading"><i class="fa fa-user"></i> About</h2>
+          <p class="muted">
+            I'm a junior at Rutgers University pursuing a dual degree in Computer Science & Cognitive Science.
+            I focus on full-stack development and building product-forward experiences — from AI-driven apps to responsive UIs.
+            I also explore product management and technical program management pathways.
+          </p>
+
+          <div style="margin-top:14px">
+            <a class="link-inline" href="#projects">→ View featured projects</a>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:16px">
+          <h2 class="section"><i class="fa fa-lightbulb"></i> Featured Projects</h2>
+          <div class="projects" id="projects">
+            <article class="proj" aria-labelledby="p1">
+              <div class="icon"><i class="fa fa-music"></i></div>
+              <div class="body">
+                <div class="meta">Vibeform — React · Node.js · Groq API · Spotify API</div>
+                <div id="p1" class="job-title">Multi-sensory mood-to-experience web app</div>
                 <ul>
-                    <li>Translate product requirements into scalable UI components using <b>React</b> and <b>Tailwind</b> in fast-paced <b>Agile</b> sprints.</li>
-                    <li>Collaborate with stakeholders to refine user flows and prioritize core features for a dynamic community sports hub.</li>
-                    <li>Build and maintain <b>RESTful</b> backend endpoints using <b>Node.js</b>, ensuring performance and clean data handling.</li>
-                    <li>Join biweekly <b>Scrum ceremonies</b>, planning sessions, and standups to align development with product goals.</li>
+                  <li>Generates playlists, recipes, meditations, and style tips from mood inputs using Groq LLM + Spotify API.</li>
+                  <li>End-to-end React + Node pipeline with animated vibe cards and responsive playback embeds.</li>
                 </ul>
-            </div>
-            
-            <div class="experience-item">
-                <div class="experience-header">
-                    <div>
-                        <span class="job-title">Front End Developer</span> at 
-                        <span class="company">Rutgers Mobile App Development Club</span>
-                    </div>
-                    <span class="job-duration">Jan 2025 – Apr 2025</span>
-                    <span class="job-location" style="margin-left:1rem; color:#888; font-size:0.95rem;">New Brunswick, NJ</span>
-                </div>
+                <div style="margin-top:8px"><a class="small link-inline" href="#" aria-label="Vibeform demo (placeholder)">Live demo</a> · <a class="small link-inline" href="#" aria-label="Vibeform repo (placeholder)">GitHub</a></div>
+              </div>
+            </article>
+
+            <article class="proj" aria-labelledby="p2">
+              <div class="icon"><i class="fa fa-graduation-cap"></i></div>
+              <div class="body">
+                <div class="meta">LearnTrack — Python · Firebase · Gemini AI · Figma</div>
+                <div id="p2" class="job-title">Personalized learning platform</div>
                 <ul>
-                    <li>Built a mobile learning app using <b>React Native</b> and <b>Firebase</b>, improving engagement and real-time data sync.</li>
-                    <li>Built personalized Pomodoro flows with <b>Gemini AI</b> to improve time management and boost study consistency.</li>
-                    <li>Collaborated with backend engineers on secure authentication and scalable database management across platforms.</li>
+                  <li>Pomodoro-powered learning app generating AI study plans via Gemini and tracking progress with Firebase.</li>
+                  <li>Real-time task sync, drag-and-drop tasks, and study session analytics.</li>
                 </ul>
+                <div style="margin-top:8px"><a class="small link-inline" href="#">Live demo</a> · <a class="small link-inline" href="#">GitHub</a></div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <aside>
+        <div class="card">
+          <h2 class="section"><i class="fa fa-award"></i> Education</h2>
+          <div class="job-title">Bachelor of Science — Computer Science & Cognitive Science</div>
+          <div class="muted-2" style="margin-top:6px">Rutgers University — New Brunswick · Sep 2023 – May 2027 · GPA 3.7</div>
+
+          <h3 style="margin-top:12px;font-size:14px;color:var(--muted)">Relevant Coursework</h3>
+          <ul class="muted small" style="margin-top:8px; columns:2; padding-left:18px">
+            <li>Data Structures</li>
+            <li>Discrete Structures</li>
+            <li>Computer Architecture</li>
+            <li>Calculus</li>
+            <li>Linear Algebra</li>
+            <li>Cognitive Science</li>
+            <li>Physics</li>
+            <li>Linguistic Theory</li>
+          </ul>
+        </div>
+      </aside>
+    </section>
+
+    <section id="experience" style="margin-top:26px">
+      <div class="card">
+        <h2 class="section"><i class="fa fa-briefcase"></i> Experience</h2>
+        <!-- Experience items are drawn from your resume -->
+        <div class="timeline" aria-live="polite">
+          <div class="job">
+            <div class="job-left" aria-hidden="true"></div>
+            <div>
+              <div class="job-title">Full Stack Developer Intern</div>
+              <div class="job-org">Sports Excitement — Remote</div>
+              <div class="job-dur">May 2025 – Aug 2025</div>
+              <ul>
+                <li>Translated product requirements into scalable UI components using React & Tailwind in Agile sprints.</li>
+                <li>Built and maintained RESTful Node.js endpoints and collaborated with stakeholders to prioritize features.</li>
+                <li>Participated in Scrum ceremonies to align development with product goals.</li>
+              </ul>
             </div>
-            
-            <div class="experience-item">
-                <div class="experience-header">
-                    <div>
-                        <span class="job-title">Freelance Web Developer</span> at 
-                        <span class="company">V3 Catering</span>
-                    </div>
-                    <span class="job-duration">Dec 2024 – Apr 2025</span>
-                    <span class="job-location" style="margin-left:1rem; color:#888; font-size:0.95rem;">Chantilly, Virginia</span>
-                </div>
-                <ul>
-                    <li>Designed and deployed a responsive site for a catering business using <b>React.js</b>, improving visibility and engagement.</li>
-                    <li>Integrated a dynamic image gallery, animated UI components, and a contact form, boosting inquiries by <b>40%</b>.</li>
-                    <li>Built modular components and enabled real-time UI updates, reducing bounce rates by <b>25%</b> and enhancing retention.</li>
-                </ul>
+          </div>
+
+          <div class="job">
+            <div class="job-left" aria-hidden="true"></div>
+            <div>
+              <div class="job-title">Front End Developer</div>
+              <div class="job-org">Rutgers Mobile App Development Club — New Brunswick, NJ</div>
+              <div class="job-dur">Jan 2025 – Apr 2025</div>
+              <ul>
+                <li>Built a React Native + Firebase learning app and implemented personalized Pomodoro flows using Gemini AI.</li>
+                <li>Worked on authentication and cross-platform DB design with backend engineers.</li>
+              </ul>
             </div>
-            
-            <div class="experience-item">
-                <div class="experience-header">
-                    <div>
-                        <span class="job-title">Grade Representative</span> at 
-                        <span class="company">Association of Indians at Rutgers (AIR)</span>
-                    </div>
-                    <span class="job-duration">Jul 2024 – Present</span>
-                    <span class="job-location" style="margin-left:1rem; color:#888; font-size:0.95rem;">New Brunswick, NJ</span>
-                </div>
-                <ul>
-                    <li>Coordinated large-scale cultural events like AIR Show, engaging <b>500+</b> students and promoting diversity on campus.</li>
-                    <li>Achieved <b>90%+</b> satisfaction through strategic programming, theme-based planning, and post-event feedback analysis.</li>
-                    <li>Ran user outreach and digital campaigns, boosting event turnout by tailoring programming to student interests.</li>
-                </ul>
+          </div>
+
+          <div class="job">
+            <div class="job-left" aria-hidden="true"></div>
+            <div>
+              <div class="job-title">Freelance Web Developer</div>
+              <div class="job-org">V3 Catering — Chantilly, VA</div>
+              <div class="job-dur">Dec 2024 – Apr 2025</div>
+              <ul>
+                <li>Designed & deployed a responsive React site with a gallery and contact form, increasing inquiries by ~40%.</li>
+                <li>Built modular components & real-time UI updates to reduce bounce and increase retention.</li>
+              </ul>
             </div>
-        </section>
-        
-        <section id="education" class="reveal">
-            <h2>Education</h2>
-            
-            <div class="experience-item">
-                <div class="experience-header">
-                    <div>
-                        <span class="job-title">Bachelor of Science in Computer Science & Cognitive Science</span>
-                    </div>
-                    <span class="job-duration">Sep 2023 – May 2027</span>
-                </div>
-                <p><strong>Rutgers University - New Brunswick</strong> | GPA: 3.7</p>
-                <h3 style="margin-top:1rem; font-size:1.1rem; color:var(--primary-color);">Relevant Coursework</h3>
-                <ul style="columns:2; margin-bottom:1rem;">
-                    <li>Data Structures</li>
-                    <li>Discrete Structures</li>
-                    <li>Calculus</li>
-                    <li>Cognitive Science</li>
-                    <li>Computer Architecture</li>
-                    <li>Physics</li>
-                    <li>Linear Algebra</li>
-                    <li>Linguistic Theory</li>
-                </ul>
+          </div>
+
+          <div class="job">
+            <div class="job-left" aria-hidden="true"></div>
+            <div>
+              <div class="job-title">Grade Representative</div>
+              <div class="job-org">Association of Indians at Rutgers (AIR) — New Brunswick, NJ</div>
+              <div class="job-dur">Jul 2024 – Present</div>
+              <ul>
+                <li>Coordinated cultural events engaging 500+ students; achieved >90% satisfaction on feedback.</li>
+                <li>Led outreach and digital campaigns to increase turnout and engagement.</li>
+              </ul>
             </div>
-        </section>
-        
-        <section id="skills" class="reveal">
-            <h2>Technical Skills</h2>
-            
-            <div class="skills-container">
-                <div class="skill-category" style="width:100%;">
-                    <h3><i class="fas fa-code"></i> Languages/Technologies</h3>
-                    <div class="skill-list" style="flex-wrap:wrap;">
-                        Languages/Technologies: Java, JavaScript, React.js, HTML, CSS, Python, C, Figma, Node.js, TypeScript, Git VC, Excel
-                    </div>
-                </div>
+          </div>
+
+          <div class="job">
+            <div class="job-left" aria-hidden="true"></div>
+            <div>
+              <div class="job-title">Incoming Mobile App Development Intern</div>
+              <div class="job-org">NBCUniversal — NBC News Group, New York, NY</div>
+              <div class="job-dur">Sep 2025</div>
+              <ul>
+                <li>Accepted role focused on Android mobile development (details TBD).</li>
+              </ul>
             </div>
-        </section>
-    </main>
-    
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" style="margin-top:26px">
+      <div class="grid-2">
+        <div class="card">
+          <h2 class="section"><i class="fa fa-tools"></i> Technical Skills</h2>
+          <div class="skills" aria-hidden="false">
+            <!-- key skills from resume -->
+            <div class="tag">Java</div><div class="tag">JavaScript</div><div class="tag">React.js</div>
+            <div class="tag">HTML</div><div class="tag">CSS</div><div class="tag">Python</div>
+            <div class="tag">C</div><div class="tag">Node.js</div><div class="tag">TypeScript</div>
+            <div class="tag">Figma</div><div class="tag">Git</div><div class="tag">Excel</div>
+          </div>
+
+          <h3 style="margin-top:14px;font-size:14px;color:var(--muted)">Other</h3>
+          <p class="muted small">Interested in Product Management & TPM paths. Comfortable in Agile teams and cross-functional collaboration.</p>
+        </div>
+
+        <aside class="card" id="contact">
+          <h2 class="section"><i class="fa fa-share-alt"></i> Contact</h2>
+          <p class="muted">Email is easiest — I typically reply quickly.</p>
+          <div style="display:flex; gap:10px; margin-top:12px; flex-wrap:wrap">
+            <a class="cta" href="mailto:th734@scarletmail.rutgers.edu">Email</a>
+            <a class="cta" href="Resume2025.pdf" download>Download Résumé</a>
+          </div>
+
+          <div style="margin-top:12px">
+            <a class="small link-inline" href="https://linkedin.com/in/tejas-hari" target="_blank" rel="noopener">LinkedIn</a> ·
+            <a class="small link-inline" href="https://github.com/tejasharih" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
     <footer>
-        <div class="footer-wave"></div>
-        <div class="container">
-            <p>© 2025 Tejas Hariharan. All rights reserved.</p>
-            <div class="social-links">
-                <a href="https://linkedin.com/in/tejas-hari"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/tejasharih"><i class="fab fa-github"></i></a>
-            </div>
-            <p>Let's connect and create something amazing together!</p>
+      <div style="max-width:920px;margin:0 auto">
+        <div style="display:flex;justify-content:center;gap:10px;align-items:center;margin-bottom:8px">
+          <div style="width:8px;height:8px;border-radius:50%;background:linear-gradient(180deg,var(--accent),var(--accent-2))"></div>
+          <div class="small muted">© 2025 Tejas Hariharan · Built with care</div>
         </div>
+        <div class="muted small">Heads-up: place <code>Resume2025.pdf</code> and <code>headshot.jpg</code> in the same folder as this file for full effect.</div>
+      </div>
     </footer>
-    <script>
-    // Reveal on scroll
-    const reveals = document.querySelectorAll('.reveal, h2, h3, .progress');
-    const revealOptions = { threshold: 0.15 };
-    const revealOnScroll = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                if (entry.target.classList.contains('progress')) {
-                    const val = entry.target.getAttribute('data-progress');
-                    entry.target.style.width = val + '%';
-                }
-                observer.unobserve(entry.target);
-            }
-        });
-    }, revealOptions);
-    reveals.forEach(el => revealOnScroll.observe(el));
-    // Animate headings on load
-    window.addEventListener('DOMContentLoaded', () => {
-        document.querySelectorAll('h2, h3').forEach((el, i) => {
-            setTimeout(() => el.classList.add('visible'), 400 + i * 120);
-        });
+  </main>
+
+  <div id="mobileNav" class="mobile-nav" aria-hidden="true">
+    <a href="#about">About</a><br>
+    <a href="#projects">Projects</a><br>
+    <a href="#experience">Experience</a><br>
+    <a href="#skills">Skills</a><br>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <script>
+    // Mobile menu
+    const toggle = document.querySelector('.mobile-toggle');
+    const mobileNav = document.getElementById('mobileNav');
+    toggle?.addEventListener('click', () => {
+      const open = mobileNav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
     });
-    </script>
+
+    // Smooth scrolling for in-page links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const href = a.getAttribute('href');
+        if (!href || href === '#') return;
+        const el = document.querySelector(href);
+        if (el) {
+          e.preventDefault();
+          el.scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      });
+    });
+
+    // Small reveal-on-scroll (intersection observer)
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.style.opacity = 1;
+      });
+    }, {threshold: 0.12});
+    document.querySelectorAll('.card, .proj, .job').forEach(el => {
+      el.style.opacity = 0; obs.observe(el);
+    });
+
+    // Small accessibility enhancement: keyboard focus outlines
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Tab') document.body.classList.add('show-focus');
+    });
+  </script>
 </body>
-</html> 
+</html>
